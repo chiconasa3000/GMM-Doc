@@ -1,3 +1,4 @@
+%% AFFINE 2D (2 traslation, 4 affine)
 % [result] = transform_by_affine2d(pointset, param)
 % perform a 2D affine transform on a pointset and
 % return the transformed pointset
@@ -14,8 +15,13 @@ function [result] = transform_by_affine2d(pointset, param)
 %% $Date: 2008-11-13 16:34:29 -0500 (Thu, 13 Nov 2008) $
 %% $Revision: 109 $
 %%=====================================================================
+
+%size of landmarks
 n = size(pointset,1);
+%affine matrix with initial params
 A = reshape(param,2,3);   A = A';
+%transform the pointset with the params 
+%ojo add vector of ones
 result =  [ones(n,1)  pointset(:,1:2)]*A;
 
 

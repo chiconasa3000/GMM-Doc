@@ -1,3 +1,4 @@
+%% AFFINE 3D (3 traslation and 9 affine)
 % [result] = transform_by_affine3d(pointset, param)
 % perform a 3D affine transform on a pointset and
 % return the transformed pointset
@@ -15,7 +16,11 @@ function [result] = transform_by_affine3d(pointset, param)
 %% $Date: 2008-11-13 16:34:29 -0500 (Thu, 13 Nov 2008) $
 %% $Revision: 109 $
 %%=====================================================================
+
+%get the size of landmarks
 n = size(pointset,1);
-A = reshape(param,3,4);   A = A'; 
+% form the matriz of params
+A = reshape(param,3,4);   A = A';
+%apply the transform to the pointset with params
 result =  [ones(n,1)  pointset(:,1:3)]*A;
         

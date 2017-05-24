@@ -20,12 +20,15 @@ __declspec( dllexport )
 #endif
 double GaussTransform(const double* A, const double* B,  int m, int n, int dim, double scale, double* grad)
 {
-	int i,j,d; 
+	int i,j,d;
     int id, jd;
-	double dist_ij, cross_term = 0;
+
+    double dist_ij, cross_term = 0;
     double cost_ij;
-	for (i=0;i<m*dim;++i) grad[i] = 0;
-	for (i=0;i<m;++i)
+	
+    for (i=0;i<m*dim;++i) grad[i] = 0;
+	
+    for (i=0;i<m;++i)
 	{
 		for (j=0;j<n;++j)
 		{
@@ -46,8 +49,10 @@ double GaussTransform(const double* A, const double* B,  int m, int n, int dim, 
 		}
 		/* printf("cross_term = %.3f\n", cross_term); */
 	}
+    
 	for (i=0;i<m*dim;++i) {
 		grad[i]/=(m*n*SQR(scale));
 	}
+    
 	return cross_term/(m*n);
 }

@@ -6,18 +6,22 @@ function [axis_limits] = DisplayPoints3D(Model, Scene, sampling, axis_limits)
 %% $Revision: 109 $
 %%=====================================================================
 
+%set display properties
 set(gca,'FontSize',16,'FontName','Times','FontWeight','bold');
 
+%plot the model and scene
 plot3(Model(:,1),Model(:,2),Model(:,3),'r+', 'MarkerSize', 8, 'LineWidth',1.5);
 hold on;
 plot3(Scene(:,1),Scene(:,2),Scene(:,3),'bo', 'MarkerSize', 8, 'LineWidth',1.5);
 axis equal;
 
+%sampling by default
 if (nargin<3)
 %    axis_limits = determine_border(Model, Scene);
     sampling = 0;
 end
 
+% show text by space with value sampling
 m = size(Model,1);
 if (sampling>0)
     for i=1:sampling:m
@@ -25,6 +29,7 @@ if (sampling>0)
     end
 end
 
+%show text of specific points by space with value sampling
 m = size(Scene,1);
 if (sampling>0)
     for i=1:sampling:m
@@ -36,6 +41,7 @@ if (nargin<4)
     axis_limits = determine_border(Model, Scene);
 end
 
+%set the axis_limits
 xlim(axis_limits(1,:));
 ylim(axis_limits(2,:));   
 zlim(axis_limits(3,:));   

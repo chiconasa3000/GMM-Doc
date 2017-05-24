@@ -1,7 +1,7 @@
 % convert quaternion to rotation matrix
 % Note:  [0,0,0,1] --> eye(3);
 %
-% See also: transform_by_rigid3d
+% See also: it can be seen transform_by_rigid3d
 function [R, g] = quaternion2rotation(q)
 %%=====================================================================
 %% $RCSfile: quaternion2rotation.m,v $

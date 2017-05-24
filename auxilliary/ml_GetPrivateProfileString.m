@@ -1,7 +1,11 @@
 function [ret]=ml_GetPrivateProfileString(AppName, KeyName, filename)
+
+%Use the name of section, keyname and the filename
+
 % Usage: [ret]=ml_GetPrivateProfileString(AppName, KeyName, filename)
 % This function is the matlab simplification of the Private Profile String
 % Reading utilities in VB and C++ to handle .ini file data
+
 % AppName = Section name of the type [xxxx]
 % KeyName = Key name separated by an equal to sign, of the type abc = 123
 % filename = ini file name to be used
@@ -24,16 +28,21 @@ function [ret]=ml_GetPrivateProfileString(AppName, KeyName, filename)
 try
     ret = '** Error **';
 a=0;
+
 if nargin~=3
     return
 end
+
 if ~exist(filename,'file')
     return
 end
-if isempty(AppName)==1 || isempty(KeyName)==1 
+
+if isempty(AppName)==1 || isempty(KeyName)==1
     return
 end
+
 a = fopen(filename);
+
 if a<=0
     return
 end

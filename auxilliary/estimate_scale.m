@@ -9,6 +9,7 @@ function scale = estimate_scale(M)
 %% Version:   $Revision: 109 $
 %%=====================================================================
 
+%the size of the model used in order to get covariance matrix (scale)
 [m,d] = size(M);
 scale = det(M'*M/m);
 for i=1:d

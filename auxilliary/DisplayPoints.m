@@ -10,6 +10,9 @@ function [axis_limits] = DisplayPoints(Model, Scene, dim, sampling, axis_limits)
 %    axis_limits = determine_border(Model,Scene);
 %end
 
+%accords to the dimension of the landmarks we display
+%using the axis_limits (frontier) and sampling value.
+
 if (nargin<4)
     sampling = 0;
 end

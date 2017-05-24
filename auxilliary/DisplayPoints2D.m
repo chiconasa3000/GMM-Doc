@@ -6,6 +6,7 @@ function [axis_limits] = DisplayPoints2D(Model, Scene, sampling, axis_limits)
 %% $Revision: 109 $
 %%=====================================================================
 
+%display properties and graph model and scene
 set(gca,'FontSize',16,'FontName','Times','FontWeight','bold');
 plot(Model(:,1),Model(:,2),'r+','MarkerSize', 8, 'LineWidth',1.5);
 hold on;
@@ -18,6 +19,8 @@ if (nargin<3)
     sampling = 0;
 end
 
+%for the model print text with the index of landmarks but with space with
+%value  of sampling
 m = size(Model,1);
 if (sampling>0)
     for i=1:sampling:m
@@ -25,6 +28,8 @@ if (sampling>0)
     end
 end
 
+%for the scene print text with the index of landmarks but with space with
+%value  of sampling
 m = size(Scene,1);
 if (sampling>0)
     for i=1:sampling:m
@@ -32,11 +37,12 @@ if (sampling>0)
     end
 end
 
-
+%defines the limits of tha axes.
 if (nargin<4)
     axis_limits = determine_border(Model, Scene);
 end
 xlim(axis_limits(1,:));
 ylim(axis_limits(2,:));   
 
+%relative control of each axe
 pbaspect([1,1,1]);
